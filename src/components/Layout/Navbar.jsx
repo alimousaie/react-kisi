@@ -28,12 +28,15 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
 	const classes = useStyles();
 	const places = useSelector((state) => state.place.places);
+	const isLogedIn = useSelector((state) => state.auth.isLogedIn);
 	const dispatch = useDispatch();
 	const [placeName, setPlaceName] = useState('');
 
 	useEffect(() => {
-		dispatch(placesActions.fetchPlaces());
-	}, [dispatch]);
+		if (isLogedIn) {
+			dispatch(placesActions.fetchPlaces());
+		}
+	}, [isLogedIn]);
 
 	useEffect(() => {
 		if (places.length > 0) {

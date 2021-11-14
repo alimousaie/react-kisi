@@ -38,10 +38,10 @@ const assignLockSuccess = (state, action) => {
 	action.data.forEach((item) => {
 		// if (!(item.group_id in updatedState)) {
 		if (!updatedState.hasOwnProperty(item.groupId)) {
-			updatedState[item.groupId] = [];
+			updatedState[item.groupId] = { data: [] };
 		}
 
-		updatedState[item.groupId].push(item);
+		updatedState[item.groupId].data.push(item);
 	});
 
 	return updateObject(state, {
@@ -63,7 +63,7 @@ const unassignLockStart = (state, action) => {
 
 const unassignLockSuccess = (state, action) => {
 	const updatedState = { ...state.groupLocks };
-	const updatedGroupLock = updatedState[action.data.groupId].filter(
+	const updatedGroupLock = updatedState[action.data.groupId].data.filter(
 		(row) => row.id !== action.data.groupLockId
 	);
 	updatedState[action.data.groupId] = updatedGroupLock;

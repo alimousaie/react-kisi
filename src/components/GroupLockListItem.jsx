@@ -25,7 +25,7 @@ const GroupLockListItem = ({ groupLock, recordDeleted }) => {
 	const dispatch = useDispatch();
 
 	const removeLockFromGroup = () => {
-		dispatch(groupLocksActions.unassignLock(groupLock.group_id, groupLock.id));
+		dispatch(groupLocksActions.unassignLock(groupLock.groupId, groupLock.id));
 		recordDeleted();
 	};
 

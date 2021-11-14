@@ -55,7 +55,7 @@ const Groups = () => {
 
 	useEffect(() => {
 		dispatch(groupsActions.fetchGroups());
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<Container className={classes.container}>

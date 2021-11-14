@@ -42,7 +42,7 @@ const AssignLock = (props) => {
 		}
 
 		dispatch(groupLocksActions.fetchGroupLocks(+groupId));
-	}, [groupId, locks, dispatch]);
+	}, []);
 
 	const handleDelete = (unselectedLock) => () => {
 		setSelectedLocks(

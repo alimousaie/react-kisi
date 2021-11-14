@@ -21,13 +21,13 @@ describe('groupLock reducer test', () => {
 	it('should store the group lock upon fetch completed successfully', () => {
 		const action = {
 			type: actionTypes.FETCH_GROUP_LOCKS_SUCCESS,
-			data: { 1: [1, 2] },
+			data: { 1: { data: [1, 2] } },
 		};
 
 		const nextState = reducer(initialState, action);
 
 		expect(nextState).toEqual({
-			groupLocks: { 1: [1, 2] },
+			groupLocks: { 1: { data: [1, 2] } },
 			loading: false,
 			error: null,
 		});
@@ -63,14 +63,18 @@ describe('groupLock reducer test', () => {
 
 		expect(nextState).toEqual({
 			groupLocks: {
-				1: [
-					{ groupId: 1, id: 1 },
-					{ groupId: 1, id: 2 },
-				],
-				2: [
-					{ groupId: 2, id: 3 },
-					{ groupId: 2, id: 4 },
-				],
+				1: {
+					data: [
+						{ groupId: 1, id: 1 },
+						{ groupId: 1, id: 2 },
+					],
+				},
+				2: {
+					data: [
+						{ groupId: 2, id: 3 },
+						{ groupId: 2, id: 4 },
+					],
+				},
 			},
 			loading: false,
 			error: null,
@@ -86,14 +90,18 @@ describe('groupLock reducer test', () => {
 		const lastState = {
 			...initialState,
 			groupLocks: {
-				1: [
-					{ groupId: 1, id: 1 },
-					{ groupId: 1, id: 2 },
-				],
-				2: [
-					{ groupId: 2, id: 3 },
-					{ groupId: 2, id: 4 },
-				],
+				1: {
+					data: [
+						{ groupId: 1, id: 1 },
+						{ groupId: 1, id: 2 },
+					],
+				},
+				2: {
+					data: [
+						{ groupId: 2, id: 3 },
+						{ groupId: 2, id: 4 },
+					],
+				},
 			},
 		};
 		const nextState = reducer(lastState, action);
@@ -101,10 +109,13 @@ describe('groupLock reducer test', () => {
 		expect(nextState).toEqual({
 			groupLocks: {
 				1: [{ groupId: 1, id: 2 }],
-				2: [
-					{ groupId: 2, id: 3 },
-					{ groupId: 2, id: 4 },
-				],
+
+				2: {
+					data: [
+						{ groupId: 2, id: 3 },
+						{ groupId: 2, id: 4 },
+					],
+				},
 			},
 			loading: false,
 			error: null,
@@ -120,14 +131,18 @@ describe('groupLock reducer test', () => {
 		const lastState = {
 			...initialState,
 			groupLocks: {
-				1: [
-					{ groupId: 1, id: 1 },
-					{ groupId: 1, id: 2 },
-				],
-				2: [
-					{ groupId: 2, id: 3 },
-					{ groupId: 2, id: 4 },
-				],
+				1: {
+					data: [
+						{ groupId: 1, id: 1 },
+						{ groupId: 1, id: 2 },
+					],
+				},
+				2: {
+					data: [
+						{ groupId: 2, id: 3 },
+						{ groupId: 2, id: 4 },
+					],
+				},
 			},
 		};
 		const nextState = reducer(lastState, action);
@@ -135,10 +150,12 @@ describe('groupLock reducer test', () => {
 		expect(nextState).toEqual({
 			groupLocks: {
 				1: [],
-				2: [
-					{ groupId: 2, id: 3 },
-					{ groupId: 2, id: 4 },
-				],
+				2: {
+					data: [
+						{ groupId: 2, id: 3 },
+						{ groupId: 2, id: 4 },
+					],
+				},
 			},
 			loading: false,
 			error: null,

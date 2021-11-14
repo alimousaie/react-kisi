@@ -62,7 +62,12 @@ const GroupDetail = () => {
 
 		dispatch(locksActions.fetchLocks());
 		dispatch(groupLocksActions.fetchGroupLocks(+groupId));
-	}, [groupId, group, dispatch]);
+	}, []);
+
+	// useEffect(() => {
+	// 	console.log('useEffect', assignedLocks);
+	// 	dispatch(groupLocksActions.fetchGroupLocks(+groupId));
+	// }, [assignedLocks]);
 
 	useEffect(() => {
 		const id = +groupId;
@@ -70,13 +75,13 @@ const GroupDetail = () => {
 		if (selectedGroup !== null && selectedGroup !== undefined) {
 			setGroup(selectedGroup);
 		}
-	}, [groups, groupId]);
+	}, [groups]);
 
 	useEffect(() => {
 		if (groupLocks[+groupId] !== null && groupLocks[+groupId] !== undefined) {
 			setAssignedLocks(groupLocks[+groupId].data);
 		}
-	}, [groupLocks, groupId]);
+	}, [groupLocks]);
 
 	const unassingAllLock = () => {
 		dispatch(
@@ -84,9 +89,13 @@ const GroupDetail = () => {
 		);
 	};
 
-	let assignedLocksMaped = <Snipper />;
+	let assignedLocksMaped = <p>No lock assigned to the group</p>;
 
-	if (assignedLocks !== null && assignedLocks !== undefined) {
+	if (
+		assignedLocks !== null &&
+		assignedLocks !== undefined &&
+		assignedLocks.length > 0
+	) {
 		assignedLocksMaped = assignedLocks.map((glock) => {
 			return (
 				<div key={'gl-' + glock.id}>

@@ -77,6 +77,7 @@ export const assignLock = (pairs) => {
 			const groupLocks = await Promise.all(result);
 			dispatch(assignLockSuccess(groupLocks));
 		} catch (error) {
+			console.error('assignLock', error);
 			dispatch(assignLockFail(error));
 		}
 	};
@@ -110,6 +111,7 @@ export const unassignLock = (groupId, groupLockId) => {
 			await kisiClient.delete(`group_locks/${groupLockId}`);
 			dispatch(unassignLockSuccess(groupId, groupLockId));
 		} catch (error) {
+			console.error('unassignLock', error);
 			dispatch(unassignLockFail(error));
 		}
 	};
@@ -148,6 +150,7 @@ export const unassignAllLock = (groupId, groupLocks) => {
 			await Promise.all(result);
 			dispatch(unassignAllLockSuccess(groupId));
 		} catch (error) {
+			console.error('unassignAllLock', error);
 			dispatch(unassignAllLockFail(error));
 		}
 	};

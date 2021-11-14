@@ -5,7 +5,6 @@ const initialState = {
 	error: null,
 	isLogedin: false,
 	loading: false,
-	authRedirectPath: '/',
 };
 
 const authStart = (state, action) => {
@@ -31,16 +30,11 @@ const authLogout = (state, action) => {
 	return updateObject(state, { isLogedin: false });
 };
 
-const setAuthRedirectPath = (state, action) => {
-	return updateObject(state, { authRedirectPath: action.path });
-};
-
 const strategies = {
 	[actionTypes.AUTH_START]: authStart,
 	[actionTypes.AUTH_SUCCESS]: authSuccess,
 	[actionTypes.AUTH_FAIL]: authFail,
 	[actionTypes.AUTH_LOGOUT]: authLogout,
-	[actionTypes.SET_AUTH_REDIRECT_PATH]: setAuthRedirectPath,
 	__default__: (state) => state,
 };
 

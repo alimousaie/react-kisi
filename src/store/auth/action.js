@@ -1,6 +1,5 @@
 import { signIn } from '../../apis/kisiApi';
 import * as actionTypes from './actionTypes';
-import store from '../store';
 
 export const authStart = () => {
 	return {
@@ -28,34 +27,16 @@ export const logout = () => {
 	};
 };
 
-export const auth = (email, password) => {
+export const auth = (email, password, history) => {
 	return async (dispatch) => {
 		dispatch(authStart());
 
 		try {
 			await signIn(email, password);
 			dispatch(authSuccess(true));
-		} catch (err) {
-			dispatch(authFail(err.response.data.error));
-		}
-	};
-};
-
-export const setAuthRedirectPath = (path) => {
-	return {
-		type: actionTypes.SET_AUTH_REDIRECT_PATH,
-		path: path,
-	};
-};
-
-export const authCheckState = () => {
-	return (dispatch) => {
-		console.log('store.getState', store.getState());
-		console.log('store.getState().authReducer', store.getState().auth);
-
-		const isLogedin = store.getState().auth.isLogedin;
-		if (!isLogedin) {
-			dispatch(logout());
+			history.push('/');
+		} catch (error) {
+			dispatch(authFail(error));
 		}
 	};
 };

@@ -6,7 +6,6 @@ describe('auth reducer test', () => {
 		error: null,
 		isLogedin: false,
 		loading: false,
-		authRedirectPath: '/',
 	};
 
 	it('should return the initial state', () => {
@@ -16,7 +15,6 @@ describe('auth reducer test', () => {
 			error: null,
 			isLogedin: false,
 			loading: false,
-			authRedirectPath: '/',
 		});
 	});
 
@@ -32,7 +30,6 @@ describe('auth reducer test', () => {
 			isLogedin: true,
 			error: null,
 			loading: false,
-			authRedirectPath: '/',
 		});
 	});
 
@@ -48,7 +45,6 @@ describe('auth reducer test', () => {
 			isLogedin: false,
 			error: null,
 			loading: false,
-			authRedirectPath: '/',
 		});
 	});
 });

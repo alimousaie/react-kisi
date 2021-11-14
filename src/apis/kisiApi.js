@@ -15,5 +15,7 @@ export async function getKisiClient() {
 
 export async function signIn(email, password) {
 	await kisiClient.signIn(email, password);
+	userConfig.email = email;
+	userConfig.password = password;
 	return kisiClient;
 }
