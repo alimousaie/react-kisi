@@ -42,7 +42,6 @@ export async function signIn(email, password) {
 	if (email === 'a' && password === 'b') {
 		return Promise.resolve({ data: {} });
 	} else {
-		// err.response.data.error
 		return Promise.reject({ error: 'login failed!' });
 	}
 }

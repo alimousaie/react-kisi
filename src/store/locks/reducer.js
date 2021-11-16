@@ -39,13 +39,4 @@ const reducer = (state = initialState, action) => {
 	return strategy(state, action);
 };
 
-// const reducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case actionTypes.FETCH_LOCKS_START: return fetchLocksStart(state, action);
-//     case actionTypes.FETCH_LOCKS_SUCCESS: return fetchLocksSuccess(state, action);
-//     case actionTypes.FETCH_LOCKS_FAIL: return fetchLocksFail(state, action);
-//     default: return state;
-//   }
-// };
-
 export default reducer;

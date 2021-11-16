@@ -11,10 +11,6 @@ const useStyles = makeStyles((theme) => ({
 		color: '#000000',
 		boxShadow: '0 5px 10px rgb(0 0 0 / 10%)',
 	},
-	toolbar: {
-		// display: "flex",
-		// justifyContent: "space-between",
-	},
 	logo: {
 		marginLeft: theme.spacing(2),
 		marginRight: theme.spacing(5),
@@ -42,7 +38,7 @@ const Navbar = () => {
 		if (places.length > 0) {
 			setPlaceName(places[0].name);
 		}
-	}, [places]);
+	}, [places.length]);
 
 	return (
 		<AppBar position='fixed' className={classes.appbar}>

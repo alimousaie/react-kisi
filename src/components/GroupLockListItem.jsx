@@ -18,6 +18,13 @@ const useStyles = makeStyles((theme) => ({
 		height: '32px',
 		width: '32px',
 	},
+	itemContainer: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		width: '100%',
+		padding: '2px 5px',
+	},
 }));
 
 const GroupLockListItem = ({ groupLock, recordDeleted }) => {
@@ -32,15 +39,7 @@ const GroupLockListItem = ({ groupLock, recordDeleted }) => {
 	return (
 		<div key={'gi-' + groupLock.id}>
 			<ListItem>
-				<div
-					style={{
-						display: 'flex',
-						justifyContent: 'space-between',
-						alignItems: 'center',
-						width: '100%',
-						padding: '2px 5px',
-					}}
-				>
+				<div className={classes.itemContainer}>
 					<Avatar className={classes.avatar}>
 						<MeetingRoom />
 					</Avatar>
@@ -52,7 +51,6 @@ const GroupLockListItem = ({ groupLock, recordDeleted }) => {
 						<DeleteIcon />
 					</IconButton>
 				</div>
-				{/* </Button> */}
 			</ListItem>
 		</div>
 	);

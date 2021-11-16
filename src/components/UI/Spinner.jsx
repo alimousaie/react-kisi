@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
 		boxShadow: 'inset 0 0 0 1em',
 		transform: 'translateZ(0)',
 		'&::before': {
-			// borderRadius: '50%',
 			position: 'absolute',
 			content: '',
 			width: '5.2em',
@@ -26,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 			animation: 'load2 2s infinite ease 1.5s',
 		},
 		'&::after': {
-			// borderRadius: '50%',
 			position: 'absolute',
 			content: '',
 			width: '5.2em',
@@ -45,7 +43,6 @@ const Spinner = () => {
 	const classes = useStyles();
 
 	return <div className={classes.Loader}>Loading...</div>;
-	// <div>Loading...</div>
 };
 
 export default Spinner;

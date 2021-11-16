@@ -25,10 +25,18 @@ const useStyles = makeStyles((theme) => ({
 	chip: {
 		width: 'auto',
 	},
+	listContiner: {
+		display: 'flex',
+		justifyContent: 'center',
+		flexWrap: 'wrap',
+		listStyle: 'none',
+		p: 0.5,
+		m: 0,
+	},
 }));
 
 const AssignLock = (props) => {
-	const { groupId, onCloseClick, onCancelClick } = props;
+	const { groupId, onCloseClick } = props;
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const groupLocks = useSelector((state) => state.groupLock.groupLocks);
@@ -44,7 +52,7 @@ const AssignLock = (props) => {
 		dispatch(groupLocksActions.fetchGroupLocks(+groupId));
 	}, []);
 
-	const handleDelete = (unselectedLock) => () => {
+	const handleDelete = (unselectedLock) => {
 		setSelectedLocks(
 			selectedLocks.filter(
 				(selectedLock) => selectedLock.key !== unselectedLock.key
@@ -93,16 +101,7 @@ const AssignLock = (props) => {
 				</Select>
 			</div>
 			<div className={classes.item}>
-				<div
-					style={{
-						display: 'flex',
-						justifyContent: 'center',
-						flexWrap: 'wrap',
-						listStyle: 'none',
-						p: 0.5,
-						m: 0,
-					}}
-				>
+				<div className={classes.listContiner}>
 					{selectedLocks.map((data) => {
 						return (
 							<div key={data.key} className={classes.item}>
@@ -121,7 +120,7 @@ const AssignLock = (props) => {
 				>
 					Add
 				</Button>
-				<Button color='secondary' onClick={onCancelClick}>
+				<Button color='secondary' onClick={onCloseClick}>
 					Cancel
 				</Button>
 			</div>

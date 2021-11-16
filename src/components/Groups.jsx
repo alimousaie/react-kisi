@@ -69,11 +69,6 @@ const Groups = () => {
 
 					{loading ? <Spinner /> : <GroupList />}
 					<Divider />
-
-					{/* i'll implement pagination next week
-                        it needs some calculation when you filter your groups too.
-                    */
-					/* <div>{pagination}</div> */}
 				</CardContent>
 			</Card>
 		</Container>

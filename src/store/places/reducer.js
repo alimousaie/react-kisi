@@ -39,13 +39,4 @@ const reducer = (state = initialState, action) => {
 	return strategy(state, action);
 };
 
-// const reducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case actionTypes.FETCH_PLACES_START: return fetchPlacesStart(state, action);
-//     case actionTypes.FETCH_PLACES_SUCCESS: return fetchPlacesSuccess(state, action);
-//     case actionTypes.FETCH_PLACES_FAIL: return fetchPlacesFail(state, action);
-//     default: return state;
-//   }
-// };
-
 export default reducer;

@@ -64,14 +64,4 @@ const reducer = (state = initialState, action) => {
 	return strategy(state, action);
 };
 
-// const reducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case actionTypes.FETCH_GROUPS_START: return fetchGroupsStart(state, action);
-//     case actionTypes.FETCH_GROUPS_SUCCESS: return fetchGroupsSuccess(state, action);
-//     case actionTypes.FETCH_GROUPS_FAIL: return fetchGroupsFail(state, action);
-//     case actionTypes.FILTER_GROUPS: return filterGroups(state, action);
-//     default: return state;
-//    }
-// };
-
 export default reducer;

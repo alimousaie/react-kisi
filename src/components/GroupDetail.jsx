@@ -22,6 +22,7 @@ import GroupLockListItem from './GroupLockListItem';
 import Snipper from './UI/Spinner';
 import TitleBar from './UI/TitleBar';
 import AssignLock from './AssignLock';
+import GroupLockList from './GroupLockList';
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -64,11 +65,6 @@ const GroupDetail = () => {
 		dispatch(groupLocksActions.fetchGroupLocks(+groupId));
 	}, []);
 
-	// useEffect(() => {
-	// 	console.log('useEffect', assignedLocks);
-	// 	dispatch(groupLocksActions.fetchGroupLocks(+groupId));
-	// }, [assignedLocks]);
-
 	useEffect(() => {
 		const id = +groupId;
 		const selectedGroup = groups.find((grp) => grp.id === id);
@@ -89,24 +85,13 @@ const GroupDetail = () => {
 		);
 	};
 
-	let assignedLocksMaped = <p>No lock assigned to the group</p>;
+	const closeDialog = () => {
+		setOpenDialog(false);
+	};
 
-	if (
-		assignedLocks !== null &&
-		assignedLocks !== undefined &&
-		assignedLocks.length > 0
-	) {
-		assignedLocksMaped = assignedLocks.map((glock) => {
-			return (
-				<div key={'gl-' + glock.id}>
-					<GroupLockListItem
-						groupLock={glock}
-						recordDeleted={() => setAssignedLocks([])}
-					/>
-				</div>
-			);
-		});
-	}
+	const clearAssignedLockList = () => {
+		setAssignedLocks([]);
+	};
 
 	return (
 		<Container className={classes.container}>
@@ -123,7 +108,11 @@ const GroupDetail = () => {
 
 					<Divider />
 					<div style={{ clear: 'both' }}></div>
-					<List>{assignedLocksMaped}</List>
+
+					<GroupLockList
+						assignedLocks={assignedLocks}
+						onDelete={clearAssignedLockList}
+					/>
 				</CardContent>
 				<CardActions>
 					<Button
@@ -142,19 +131,13 @@ const GroupDetail = () => {
 			{openDialog && (
 				<Dialog
 					open={openDialog}
-					onClose={() => setOpenDialog(false)}
+					onClose={closeDialog}
 					className={classes.dialog}
 				>
 					<DialogTitle>{group.name}</DialogTitle>
 					<Divider />
 					<DialogContent className={classes.dialogContent}>
-						<AssignLock
-							groupId={groupId}
-							onCloseClick={() => {
-								setOpenDialog(false);
-							}}
-							onCancelClick={() => setOpenDialog(false)}
-						/>
+						<AssignLock groupId={groupId} onCloseClick={closeDialog} />
 					</DialogContent>
 				</Dialog>
 			)}

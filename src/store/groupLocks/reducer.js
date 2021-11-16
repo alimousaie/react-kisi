@@ -123,22 +123,4 @@ const reducer = (state = initialState, action) => {
 	return strategy(state, action);
 };
 
-// const reducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case actionTypes.FETCH_GROUP_LOCKS_START: return fetchGroupLocksStart(state, action);
-//     case actionTypes.FETCH_GROUP_LOCKS_SUCCESS: return fetchGroupLocksSuccess(state, action);
-//     case actionTypes.FETCH_GROUP_LOCKS_FAIL: return fetchGroupLocksFail(state, action);
-//     case actionTypes.ASSIGN_LOCK_START: return assignLockStart(state, action);
-//     case actionTypes.ASSIGN_LOCK_SUCCESS: return assignLockSuccess(state, action);
-//     case actionTypes.ASSIGN_LOCK_FAIL: return assignLockFail(state, action);
-//     case actionTypes.UNASSIGN_LOCK_START: return unassignLockStart(state, action);
-//     case actionTypes.UNASSIGN_LOCK_SUCCESS: return unassignLockSuccess(state, action);
-//     case actionTypes.UNASSIGN_LOCK_FAIL: return unassignLockFail(state, action);
-//     case actionTypes.UNASSIGN_ALL_LOCK_START: return unassignAllLockStart(state, action);
-//     case actionTypes.UNASSIGN_ALL_LOCK_SUCCESS: return unassignAllLockSuccess(state, action);
-//     case actionTypes.UNASSIGN_ALL_LOCK_FAIL: return unassignAllLockFail(state, action);
-//     default: return state;
-//   }
-// };
-
 export default reducer;
